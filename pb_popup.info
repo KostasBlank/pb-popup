@@ -1,0 +1,6 @@
+name = PB Popup Discount Coupon
+description = Opens a popup once for each user.
+core = 7.x
+package = Point Blank
+
+dependencies[] = jstorage_lib

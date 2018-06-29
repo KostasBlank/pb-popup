@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * @file
+ * Provides the popup functionality.
+ */
+
+/**
+ * Implements hook_block_info().
+ */
+function pb_popup_block_info() {
+  $blocks = array();
+
+  $blocks['pb_popup'] = array(
+    'info' => t('Popup Block'),
+    'cache' => DRUPAL_NO_CACHE,
+    'status' => TRUE,
+    'region' => 'content',
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function pb_popup_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'pb_popup':
+      libraries_load('jstorage');
+      $block['subject'] = NULL;
+      // Create markup and content.
+      $output = '';
+      $output .= '<div class="pb-popup__wrapper">';
+      $output .= '<div class="pb-popup__content">' . t('My content') . '</div>';
+      $output .= '</div>';
+      $block['content'] = array(
+        '#markup' => $output,
+        '#attached' => array(
+          'js' => array(
+            drupal_get_path('module', 'pb_popup') . '/js/pb_popup.js',
+          )
+        ),
+      );
+      break;
+  }
+  return $block;
+}
