@@ -1,4 +1,4 @@
-#PB Popup
+# PB Popup
 
 A simple drupal 7 module that opens a popup only once.
 
