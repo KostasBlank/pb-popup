@@ -33,11 +33,17 @@ function pb_popup_block_view($delta = '') {
       // Create markup and content.
       $output = '';
       $output .= '<div class="pb-popup__wrapper">';
-      $output .= '<div class="pb-popup__content">' . t('My content') . '</div>';
+      $output .= '<div class="pb-popup__date">' . t('UNTIL THE 25th OF JULY 2018') . '</div>';
+      $output .= '<div class="pb-popup__percentage">-30%</div>';
+      $output .= '<div class="pb-popup__content">' . t('With every <strong>face sunscreen</strong><br /> 30% discount to <strong>body sunscreen</strong>') . '</div>';
+      $output .= '<div class="pb-popup__button">' . l(t('SEE THE FACE SUNSCREENS'), base_path() . 'taxonomy/term/14') . '</div>';
       $output .= '</div>';
       $block['content'] = array(
         '#markup' => $output,
         '#attached' => array(
+          'css' => array(
+            drupal_get_path('module', 'pb_popup') . '/css/pb_popup.css',
+          ),
           'js' => array(
             drupal_get_path('module', 'pb_popup') . '/js/pb_popup.js',
           )
